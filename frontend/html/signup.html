@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="../style/signup.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="#">Appointments</a></li>
+                <li><a href="./doctors.html">Doctors</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="signup-container">
+        <form id="register_form">
+            <h2>Create an Account</h2>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" required>
+                    <option value="" selected disabled>Choose gender</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select name="role" id="role" required>
+                    <option value="" selected disabled>Choose role</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="patient">Patient</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" name="location" id="location" required>
+            </div>
+            <div class="form-group">
+                <label for="doctor_specialization">Specialization for Doctors:</label>
+                <select name="doctor_specialization" id="doctor_specialization">
+                    <option value="" selected disabled>Choose specialization</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Endocrinology">Endocrinology</option>
+                    <option value="Gastroenterology">Gastroenterology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Psychiatry">Psychiatry</option>
+                    <option value="Surgery">Surgery</option>
+                </select>                
+            </div>
+            <input class="btn" type="submit" value="Register">
+        </form>
+    </div>
+</body>
+
+</html>
+<script src="../script/signup.js"></script>
