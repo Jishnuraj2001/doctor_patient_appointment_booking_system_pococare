@@ -69,16 +69,27 @@
   margin-bottom: 10px;
 }
 
+.date,
+.time_slot{
+  margin: auto;
+  width: 100%;
+  border: none;
+  height: 25px;
+}
+
+
 .name,
 .email,
 .specialization,
 .description,
-.place {
+.place,
+.date,
+.time_slot{
   margin-bottom: 10px;
 }
 
 .btn {
-  width: 98%;
+  width: 100%;
   background-color: #4CAF50;
   color: white;
   border: none;
