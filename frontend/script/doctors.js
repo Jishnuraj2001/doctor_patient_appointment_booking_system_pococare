@@ -108,10 +108,34 @@ function renderDoctorsFn(arr) {
     for(let form of all_forms){
         form.addEventListener("submit",(event)=>{
             event.preventDefault();
-            const id=event.target.querySelector(".btn").dataset.id;
+            const doctor_id=event.target.querySelector(".btn").dataset.id;
             const date=event.target.querySelector(".date").value;
             const time_slot = event.target.querySelector(".time_slot").value;
+            bookAppointmentFn({doctor_id,date,time_slot});
         })
+    }
+}
+
+
+async function bookAppointmentFn(obj){
+    try {
+        let res = await fetch("http://localhost:3100/appointment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/json",
+                authorization: sessionStorage.getItem("health_token")
+            },
+            body:JSON.stringify(obj)
+        })
+        let fin = await res.json();
+        if (res.status == 202) {
+            renderDoctorsFn(fin.msg);
+        } else {
+            alert(fin.msg);
+        }
+    } catch (error) {
+        console.log(error.message);
+        alert("Unable to get Doctor's");
     }
 }
 
