@@ -10,7 +10,7 @@ const { userRouter } = require("./routes/user.router");
 const { appointmentRouter } = require("./routes/appointment.router");
 
 app.get("/", (req, res) => {
-    res.send("Basic API endpoint for Buycars.com");
+    res.send("Basic API endpoint for MediConnect");
 })
 
 app.use("/", userRouter);
