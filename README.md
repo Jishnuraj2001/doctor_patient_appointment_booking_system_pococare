@@ -2,6 +2,28 @@
 
 
 
+### Login Credentials
+
+- **Patient Login**
+  - Email: jishnurajkarockal@gmail.com
+  - Password: 123
+
+- **Doctor Login**
+  - Email: kuttu@gmail.com
+  - Password: 123
+
+### Deployment
+
+The system has been deployed with the following configurations:
+
+- **Frontend**
+  - Live URL: [https://health-care-system-jishnu.netlify.app/](https://health-care-system-jishnu.netlify.app/)
+
+- **Backend**
+  - Live URL: [https://health-care-system-backend.onrender.com](https://health-care-system-backend.onrender.com)
+
+
+
 # MediConnect API Documentation
 
 This documentation provides an overview of the MediConnect API, including its endpoints, request/response formats, authentication, and authorization requirements.
