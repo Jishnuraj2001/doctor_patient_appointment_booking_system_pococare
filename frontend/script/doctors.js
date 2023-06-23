@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (day < 10)
       day = '0' + day.toString();
   
-    min_date = year + '-' + month + '-' + day;
-    // document.getElementById('inputdate').setAttribute('min', minDate);
+    min_date = year + '-' + month + '-' + (day+1);
   });
 
 fetchDoctorsFn();
@@ -129,7 +128,8 @@ async function bookAppointmentFn(obj){
         })
         let fin = await res.json();
         if (res.status == 202) {
-            renderDoctorsFn(fin.msg);
+            alert(fin.msg);
+            window.location.href="../html/appointments.html";
         } else {
             alert(fin.msg);
         }

@@ -6,16 +6,44 @@ const { authenticator } = require("../middlewares/authenticator.middleware");
 const { authorizer } = require("../middlewares/authorizer.middleware");
 
 
-appointmentRouter.post("/appointment",authenticator,authorizer(["patient"]),async (req, res) => {
-    const{doctor_id,date,time_slot,userID}=req.body;
+appointmentRouter.post("/appointment", authenticator, authorizer(["patient"]), async (req, res) => {
+    const { doctor_id, date, time_slot, userID } = req.body;
     try {
-        console.log(req.body);
-        res.status(202).json({"msg":"appointment created successfully"});
+        const exist = await Appointmentmodel.findOne({ doctor_id, date, time_slot });
+        console.log(exist);
+        if (exist) {
+            res.status(409).json({ "msg": `Slot already Booked for date:${date} and time:${time_slot},\n Please choose any other slot` });
+        } else {
+            const appointment = new Appointmentmodel({ doctor_id, date, time_slot, patient_id: userID });
+            await appointment.save();
+            res.status(202).json({ "msg": "appointment created successfully" });
+        }
     } catch (error) {
         console.log(error.message);
-        res.status(400).json({ "msg": "something went wrong while creating new appointment" })
+        res.status(400).json({ "msg": "something went wrong while creating new appointment" });
     }
 })
+
+
+
+appointmentRouter.get("/appointments", authenticator, authorizer(["patient", "doctor"]), async (req, res) => {
+    const { userID, userRole } = req.body;
+    console.log(userID, userRole);
+    try {
+        if (userRole == "doctor") {
+            const appointments = await Appointmentmodel.find({ doctor_id:userID }).populate("doctor_id patient_id");
+            res.status(200).json({ "msg": "appointments fetched successfully", "data": appointments, userRole });
+        } else if (userRole == "patient") {
+            const appointments = await Appointmentmodel.find({ patient_id: userID }).populate("doctor_id patient_id");
+            res.status(200).json({ "msg": "appointments fetched successfully", "data": appointments, userRole });
+        }
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(400).json({ "msg": "something went wrong while creating getting appointments" });
+    }
+})
+
 
 
 
