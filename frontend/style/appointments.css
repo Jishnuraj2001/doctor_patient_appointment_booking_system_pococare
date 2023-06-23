@@ -1,0 +1,122 @@
+
+ /* Reset styles */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  
+  /* Header styles */
+  header {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  nav ul li a.active {
+    font-weight: bold;
+  }
+
+
+
+  #appointment_header{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+/* Appointment Box Styles */
+#main_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 40px;
+  }
+  
+  .appointment_box {
+    background-color:#d4d4d4;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .appointment_box label {
+    font-weight: bold;
+  }
+
+  .appointment_box{
+    font-size: 18px;
+  }
+  
+  .doctor_name,
+  .specialization,
+  .doctor_email,
+  .patient_name,
+  .date,
+  .time_slot,
+  .patient_email {
+    margin-bottom: 10px;
+  }
+
+  .btns_div{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .video_btn,
+  .delete_btn {
+    width:48%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+  }
+  
+  .video_btn {
+    background-color: #337ab7;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    #main_container {
+      grid-template-columns: 1fr;
+    }
+  
+    .appointment_box {
+      padding: 10px;
+    }
+  
+    .video_btn,
+    .delete_btn {
+      padding: 8px 16px;
+    }
+  }
+  
