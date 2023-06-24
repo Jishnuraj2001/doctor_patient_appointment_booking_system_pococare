@@ -1,4 +1,27 @@
-# doctor_patient_appointment_booking_system_pococare
+# MediConnect Health Care System
+
+
+📢 Important Note: Video Call Functionality Limitations in Deployed Environment
+
+⚠️ Attention: Video call functionality is currently limited in the deployed/live version of this application. For the best experience, I recommend cloning the repository and running the application locally.
+
+🚀 Why is it not working on the deployed version?
+To establish a seamless peer-to-peer connection for video calling, the Node.js server and the Peer server need to run on different ports. However, hosting service providers like Render and Railway typically allow running only a single server or process on a specific port. As a result, when the application is deployed, only one person's video will be rendered during the video call.
+
+💡 How to make it work perfectly?
+To fully experience the video call functionality and enable proper communication between the doctor and patient, I encourage you to follow these steps:
+
+1. Clone the repository: `https://github.com/Jishnuraj2001/doctor_patient_appointment_booking_system_pococare.git`
+2. Install dependencies: `cd backend && npm install`
+3. Start the Node.js server: `npm run server`
+4. Start the Peer server on a separate port: `peerjs --port 3001`
+5. Access the application locally: Open your browser and visit `http://localhost:<your-port>`
+
+By running the application locally, you can ensure that the Node.js server and the Peer server operate on different ports, enabling successful peer-to-peer communication during video calls.
+
+🔍 Need assistance or have questions?
+If you encounter any issues or have questions regarding the video call functionality, please don't hesitate to reach out.
+
 
 
 
@@ -41,6 +64,7 @@ This documentation provides an overview of the MediConnect API, including its en
 5. [Installation](#installation)
 6. [Environment Variables](#environment-variables)
 7. [Dependencies](#dependencies)
+8. [Video Calling API Documentation](#Video-Calling-API-Documentation)
 
 ## Introduction
 
@@ -263,5 +287,70 @@ The MediConnect API relies on the following dependencies:
 - mongoose: MongoDB object modeling tool.
 - nodemailer: Library for sending emails.
 - nodemon: For running the server.
+- socket.io: for real-time communication and event handling.
+- peerjs: for establishing peer-to-peer connections between the doctor and patient.
+- ejs: A simple and flexible templating engine that enables generating HTML markup with embedded JavaScript code.
 
 For a complete list of dependencies, refer to the `package.json` file.
+
+
+
+
+
+## Video Calling API Documentation
+
+This documentation provides information about the video calling functionality in the MediConnect appointment booking system. The video calling feature allows doctors and patients to join a video call when they have the same appointment ID.
+
+### Start Video Call
+
+To start a video call, follow the steps below:
+
+1. The doctor/patient can initiates the video call by clicking on the "Video Consultation" button for a specific appointment.
+
+   This endpoint redirects the doctor to a new URL with the appointment ID as the endpoint.
+
+   - `:appointmentId` - Replace with the actual appointment ID.
+
+   Example:
+
+   ```
+   http://localhost:<port>/<specific appointmentId>
+   ```
+
+2. The doctor/patient will be redirected to a video consultation page where they can interact with the other person.
+
+### Join Video Call
+
+To join a video call as a patient/doctor, follow the steps below:
+
+1. By clicking the above same btn the doctor/patient can join the video call.
+
+   Example URL: `http://localhost:<port>/<specific appointmentId>`
+
+3. The patient/doctor will be redirected to the video consultation page where they can interact with the doctor.
+
+   This endpoint renders an EJS template for the video consultation page.
+
+   - `:appointmentId` - Replace with the actual appointment ID.
+
+
+### Video Consultation Page
+
+The video consultation page allows doctors and patients to interact during the video call. It includes the following features:
+
+- Video Grid: Displays the video streams of both the doctor and the patient.
+- Toggle Audio: Button to mute/unmute the audio during the video call.
+- Toggle Camera: Button to turn on/off the camera during the video call.
+
+**Note:** The video consultation page uses the following JavaScript libraries:
+
+- `socket.io` for real-time communication and event handling.
+- `peerjs` for establishing peer-to-peer connections between the doctor and patient.
+- `ejs` A simple and flexible templating engine that enables generating HTML markup with embedded JavaScript code.
+- `script.js` contains the JavaScript code for handling audio and video toggles, connecting to the video call, and managing user streams.
+
+### Disconnect from Video Call
+
+To disconnect from a video call, simply close the video consultation page or navigate away from the page. The connection will be automatically terminated, and the doctor and patient will be disconnected.
+
+
