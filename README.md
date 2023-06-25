@@ -1,7 +1,7 @@
 # MediConnect Health Care System
 
 
-[MediConnect Presentation](https://youtu.be/cPkTHOzz0lk)
+[MediConnect Presentation](https://drive.google.com/file/d/19IUIuaOYmmR_VncmvNm4SDcwI63LUwh5/view?usp=sharing)
 
 
 📢 Important Note: Video Call Functionality Limitations in Deployed Environment
